@@ -18,11 +18,11 @@ public class AuthService {
     @Autowired
     private SignupUserRepository signupUserRepository;
     
-    public String LoginAuthService(SignupDto signupdto){
+    public String SignupAuthService(SignupDto signupdto){
         SignupEntity signupEntity = new SignupEntity();
         signupEntity.setEmail(signupdto.getEmail());
         signupEntity.setPassword(signupdto.getPassword());
-        signupUserRepository.save(signupEntity);
-        return "Registration Successful";
+        return signupUserRepository.save(signupEntity) != null ? "Signup Successful" : "Signup Failed";
+       
     }
 }
