@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.social.signin.dto.LoginDto;
 import com.social.signin.dto.SignupDto;
 import com.social.signin.service.AuthService;
+import com.social.signin.service.EmailKafkaProducer;
 import com.social.signin.service.LoginService;
 
 
@@ -20,10 +21,18 @@ public class Usercontroller {
     private AuthService authService;
     @Autowired
     private LoginService loginService;
+    @Autowired
+    private EmailKafkaProducer EmailKafkaProducer;
 
 @PostMapping("/auth/signup")
 public String SignupController(@RequestBody SignupDto signupdto){
-    return authService.SignupAuthService(signupdto); 
+    String result = authService.SignupAuthService(signupdto); 
+     if(result.equalsIgnoreCase("success")){
+        EmailKafkaProducer.sendEmail(signupdto.getEmail());
+        return "Signup Successful";
+    } else {
+        return "Signup Failed";
+    }
 }
 
 @GetMapping("/auth/login")

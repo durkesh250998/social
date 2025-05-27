@@ -22,7 +22,7 @@ public class AuthService {
         SignupEntity signupEntity = new SignupEntity();
         signupEntity.setEmail(signupdto.getEmail());
         signupEntity.setPassword(signupdto.getPassword());
-        return signupUserRepository.save(signupEntity) != null ? "Signup Successful" : "Signup Failed";
+        return signupUserRepository.save(signupEntity) != null ? "success" : "failure";
        
     }
 }
