@@ -19,6 +19,12 @@ public class PrescriptionController {
     @PostMapping("/user")
     private String getPrescriptionService(@RequestParam String email, @RequestBody Prescriptiondto prescriptiondto){
         prescriptiondto.setEmail(email); // Set the email from the request param
-        return prescriptionService.getPrescription(prescriptiondto);
+        String pres_value = prescriptionService.getPrescription(prescriptiondto);
+        if(pres_value.equals("success")){
+            String status_pdf = prescriptionService.getPrescriptionPdf(prescriptiondto);
+            return status_pdf;
+        } else {
+            return "failure";
+        }
     }
 }
