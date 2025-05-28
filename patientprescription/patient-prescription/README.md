@@ -1,4 +1,4 @@
-## Patient Prescription Payoad
+## Patient Prescription Payload
 ```sh
 POST
 http://localhost:8081/prescriptions/user?email=hello@gmail.com
