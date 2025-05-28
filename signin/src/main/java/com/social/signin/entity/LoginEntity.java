@@ -9,7 +9,7 @@ import lombok.Data;
 
 
 @Entity
-@Table(name = "signup")
+@Table(name = "user_db")
 @Data
 public class LoginEntity {
     @Id

@@ -3,8 +3,6 @@
 This project demonstrates how to use Apache Kafka with Spring Boot for sending and receiving user email messages.
 
 ## Prerequisites
-- Java 17 or higher
-- Maven
 - [Download Apache Kafka](https://kafka.apache.org/downloads)
 
 ## Kafka Setup (macOS/Linux)
@@ -38,12 +36,12 @@ bin/kafka-topics.sh --list --bootstrap-server localhost:9092
 - The topic name should match `user-email-topic`.
 - Use the provided producer and consumer services to send and receive messages.
 
-## Running the App
 
+## MYSQL SERVER
 ```sh
-./mvnw spring-boot:run
-```
+brew install mysql
+mysql.server start
+mysql -u root
+mysql -u root -p
 
-## Useful Links
-- [Apache Kafka Documentation](https://kafka.apache.org/documentation/)
-- [Spring for Apache Kafka](https://docs.spring.io/spring-kafka/docs/current/reference/html/)
+```
